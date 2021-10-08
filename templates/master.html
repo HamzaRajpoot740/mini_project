@@ -29,7 +29,7 @@
             <ul class="top_nav ">
               <li {% if request.path == '/' %}class="active"{% endif %}><a href="{{url_for('home')}}">Home</a></li>
               <li><a href="./about-us">About us</a></li>
-              <li><a href="./contact-us">Contact Us</a></li>
+              <li><a href="{{url_for('contact')}}">Contact Us</a></li>
                 {% if session.get('admin')%}
               <li><a href="{{url_for('admin')}}">Dashboard</a></li>
                 {%else%}
