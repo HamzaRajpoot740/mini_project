@@ -1,50 +1,14 @@
--- phpMyAdmin SQL Dump
--- version 4.9.5deb2
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Generation Time: Oct 05, 2021 at 02:25 PM
--- Server version: 8.0.26-0ubuntu0.20.04.2
--- PHP Version: 7.4.3
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `newsfeed`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `about`
---
 
 CREATE TABLE `about` (
   `id` int NOT NULL,
   `about` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
 
---
--- Dumping data for table `about`
---
 
 INSERT INTO `about` (`id`, `about`) VALUES
 (9, '<p>&nbsp;A trend-setter in its space, Network18 Media and Investments Ltd is one of the largest media conglomerates with diversified but synergistic interests in Television with its bouquet of fifty channels in India and thirteen international channels, besides filmed entertainment, digital content, magazines, digital commerce and allied businesses. Network18 is promoted by Independent Media Trust of which Reliance Industries is the sole beneficiary.&nbsp;<strong><strong>TV18 Broadcast ltd</strong>, a subsidiary of Network18</strong>&nbsp;manages its primary business of broadcasting. TV18 runs the largest news network in India, spanning business news, general news and regional news channels.</p>\r\n\r\n<blockquote>\r\n<ol>\r\n	<li>\r\n	<h3 style=\"color:#aaaaaa; font-style:italic\"><small>Network18 has built successful strategic alliances with globally reputed media players such as Viacom, CNBC, CNN, A+E Networks and Forbes</small></h3>\r\n	</li>\r\n	<li>\r\n	<h3 style=\"color:#aaaaaa; font-style:italic\"><small>Steered by a professional and experienced team of editors, news tellers and entertainers, Network18 constantly seeds new ideas of programming and triggers thought processes</small></h3>\r\n	</li>\r\n	<li>\r\n	<h3 style=\"color:#aaaaaa; font-style:italic\"><small>At Network18, the focus is on driving the highest standards of creative excellence by fostering a culture of innovation to build new content formats thereby creating strong brands across diverse media</small></h3>\r\n	</li>\r\n	<li>\r\n	<h3 style=\"color:#aaaaaa; font-style:italic\"><small>Through its continued investments in regional and digital platforms, Network18 claims unparalleled reach</small></h3>\r\n	</li>\r\n</ol>\r\n</blockquote>\r\n');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `admin`
---
 
 CREATE TABLE `admin` (
   `id` int NOT NULL,
@@ -52,29 +16,19 @@ CREATE TABLE `admin` (
   `username` varchar(30) NOT NULL,
   `email` varchar(24) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
 
---
--- Dumping data for table `admin`
---
+
 
 INSERT INTO `admin` (`id`, `name`, `username`, `email`, `password`) VALUES
 (1, 'Administrator', 'admin', 'admin@gmail.com', 'admin');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
---
 
 CREATE TABLE `category` (
   `cid` int NOT NULL,
-  `cname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `cname` varchar(30)
+) ENGINE=InnoDB;
 
---
--- Dumping data for table `category`
---
 
 INSERT INTO `category` (`cid`, `cname`) VALUES
 (1, 'politics'),
@@ -83,47 +37,33 @@ INSERT INTO `category` (`cid`, `cname`) VALUES
 (4, 'technology'),
 (7, 'sports');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `contact`
---
+CREATE TABLE contact (
+  id int NOT NULL,
+  address varchar(200) NOT NULL,
+  phone varchar(15) NOT NULL,
+  email varchar(55) NOT NULL,
+  fax varchar(15) NOT NULL
+) ENGINE=InnoDB;
 
-CREATE TABLE `contact` (
-  `id` int NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `phone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `email` varchar(55) NOT NULL,
-  `fax` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data for table `contact`
---
 
-INSERT INTO `contact` (`id`, `address`, `phone`, `email`, `fax`) VALUES
-(11, 'Computer Science Departmenet, University of Balochistan', '923058477002', 'Iscobaloch@gmail.org', '92812633881');
+INSERT INTO contact (id, address, phone, email, fax) VALUES
+(11, 'Computer Science Departmenet, University of Balochistan', '923058477002', 'rjvideos9@gmail.com', '92812633881');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `posts`
---
 
 CREATE TABLE `posts` (
   `pid` int NOT NULL,
-  `pheading` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `pdescription` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `pthumbnail` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `pheading` mediumtext  NOT NULL,
+  `pdescription` mediumtext  NOT NULL,
+  `pthumbnail` varchar(100)  NOT NULL,
   `catid` int NOT NULL,
-  `pdetails` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `pdetails` longtext,
   `ptime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `pubid` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
 
---
--- Dumping data for table `posts`
---
+
 
 INSERT INTO `posts` (`pid`, `pheading`, `pdescription`, `pthumbnail`, `catid`, `pdetails`, `ptime`, `pubid`) VALUES
 (6, 'Flawed policies produce trade deficit', 'The PTI government inherited the highest ever merchandise trade deficit of our history — $37.6 billion in 2017-18 (with the import bill at $60.8bn and export earnings at $23.2bn). It had no option but to opt for tariff barriers to contain this huge deficit. And it did the same.', 'hmR45X9h6gty6d5jCxATeyFz4qo.jpg', 3, 'Goods’ trade deficit fell to $31.8bn in 2018-19 and then to $23.2bn in 2019-20 but it shot up again to $31.1bn in 2020-21. And, in two months of this fiscal year (July-August), the deficit has skyrocketed to about $7.5bn due to a phenomenal rise in imports. Our policymakers are coming up with incentive packages for exports and have asked the relevant officials to begin forecasting foreign trade on a monthly basis. The tariff barriers introduced in the first year of the PTI government were withdrawn later and have so far not been reintroduced.\r\n\r\nPakistan’s foreign trade model has some structural flaws that make it difficult to sustain export gains over a long time. And, it also has flaws that make it difficult to keep imports’ growth aligned with export development and GDP growth.\r\n\r\nAs a result, every now and then we see imports growing too fast and export growing too slow or remaining stagnant. When trade deficit expands policymakers try to find some quick-fix solutions. But in the long run, structural issues compound. Uncertainty persists. And, after every few years, the economy has to pay the price of a sudden rise in the trade deficit.\r\n\r\nDuring the last three years of the Gen Musharraf era, Pakistan attracted $15bn in foreign direct investment. That investment expanded the stock of capital goods, led to higher industrial outputs and facilitated exports’ growth in coming years — particularly in 2008-9, 2009-10 and 2010-11. Musharraf’s advisers should have foreseen that the gushing foreign direct investment (FDI) inflow that came in, partly due to his pro-West policies, would eventually come to a halt. And, they should have leveraged FDI inflows to increase domestic investment in industries. But that did not happen. Local investment grew but not to the extent to support a pro-export foreign trade model after an eventual drying up of FDI inflows.\r\n\r\nThe PPP government that came in after Musharraf did little to promote domestic investment. It rather tried to push exports including food exports through subsidies. Policymakers of the Zardari era did not foresee the eventual outcome of their strategy — a jump in the fiscal deficit and consequent reduction in subsidies. Exports’ growth in 2009-09, 2009-10 and 2010-11 fell in 2011-12, bounced back briefly in 2012-13 but then saw little or no growth in next four years.\r\n\r\nIt was only during the last year of the PML-N government in 2017-18 that exports strongly bounced back mostly due to energy and other input subsidies offered to food, textiles and some other export sectors. Policymakers of the Nawaz era failed to anticipate correctly the kind of phenomenal growth in imports that was bound to occur after the launch of the China-Pakistan Economic Corridor (CPEC). It resulted in skyrocketing imports, creating an unmanageable foreign trade deficit in 2017-18, in the absence of a matching growth in exports.\r\n\r\nThe current PTI regime inherited a large trade deficit and tried to fix it by containing imports and allegedly by going slow on CPEC projects. Little did they do in their first three years to prepare exporters for operating efficiently after the withdrawal of energy subsidies. Nor did they take any major initiative to prepare them to learn to leverage increased imports after the accelerated implementation of CPEC projects for boosting exports.\r\n\r\nWe are again back to square one: goods’ trade deficit continues to expand, making the rupee weaker, prompting imported inflation and depreciating PTI’s political capital.\r\n\r\nOne key reason why Pakistan failed in developing a sustainable foreign trade model in the past two decades is that the country has not wholeheartedly acknowledged a key fact: there is no escape from enhancing GDP growth more via increased foreign trade and less via domestic economy.\r\n\r\nThe share of global trade in the global economy that stood at 45.5 per cent in 1999 gradually shot up to 58.2pc in 2019, according to the World Bank’s latest stats. But Pakistan’s share of foreign trade in its GDP is far lesser — about 26pc, according to 2020 stats.\r\n\r\nBefore developing a sustainable foreign trade model, it is necessary to acknowledge the growing importance of foreign trade in economic growth. This means, instead of containing imports unwisely, policymakers should focus on enabling industries to absorb increased imports for producing value-added exportable items.\r\n\r\nA blanket upward tariff revision of thousands of categories of items only suppresses their demand in local markets temporarily. This pent-up demand emerges after a while. Besides, unilateral tariff hikes prompt reprisals from foreign trade partners. And when we are under an International Monetary Fund programme —as we are now — the Fund officials object to such tariff hikes and the government of the day has to reverse them.\r\n\r\nAnother structural problem with Pakistan’s foreign trade model is that our industrial base is shallow and we do not produce lots of consumer goods that can be produced domestically with some investment in technology and skills development. The country has recently been able to manufacture and export mobile phones. This could have been done much earlier and could have helped boost merchandise exports. Pakistan’s export model should have been designed to facilitate indigenisation of technology with foreign collaboration.\r\n\r\nPublished in Dawn, The Business and Finance Weekly, September 20th, 2021', '2021-09-22 08:52:15', ''),
@@ -140,97 +80,56 @@ INSERT INTO `posts` (`pid`, `pheading`, `pdescription`, `pthumbnail`, `catid`, `
 (38, 'djjndj', 'jdnjdn', 'mZKn-wz9sFCsKIU0-5p7oIvlQtA.jpg', 1, '<p>xjsjnsj</p>', '2021-10-05 03:01:23', 'wali'),
 (39, 'admin', 'admin', 'x5ju793BmQL79eKfC5-vcT291ps.png', 3, '<p>xnxjn</p>', '2021-10-05 03:02:15', 'admin');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `user`
---
 
 CREATE TABLE `user` (
   `id` int NOT NULL,
   `name` varchar(50) NOT NULL,
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `username` varchar(50) NOT NULL,
   `email` varchar(24) NOT NULL,
-  `password` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `user`
---
+  `password` varchar(300)  NOT NULL
+) ENGINE=InnoDB ;
 
 INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`) VALUES
 (1, 'Administrator', 'admin', 'admin@gmail.com', 'admin'),
 (8, 'wali', 'wali', 'wali@gmail.com', 'wali');
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `about`
---
 ALTER TABLE `about`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `category`
---
+
 ALTER TABLE `category`
   ADD PRIMARY KEY (`cid`);
 
---
--- Indexes for table `contact`
---
+
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `posts`
---
+
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`pid`);
 
---
--- Indexes for table `user`
---
+
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `about`
---
 ALTER TABLE `about`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
--- AUTO_INCREMENT for table `category`
---
+
 ALTER TABLE `category`
   MODIFY `cid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT for table `contact`
---
 ALTER TABLE `contact`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
---
--- AUTO_INCREMENT for table `posts`
---
+
 ALTER TABLE `posts`
   MODIFY `pid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
---
--- AUTO_INCREMENT for table `user`
---
 ALTER TABLE `user`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
